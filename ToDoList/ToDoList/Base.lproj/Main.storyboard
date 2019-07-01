@@ -103,8 +103,8 @@
                         <viewLayoutGuide key="safeArea" id="KaG-KN-eSk"/>
                     </view>
                     <connections>
-                        <outlet property="NameText" destination="hCd-7L-jfv" id="1EE-w3-6We"/>
                         <outlet property="importantSwitch" destination="wXl-VV-FaY" id="jIN-Nq-lK4"/>
+                        <outlet property="nameText" destination="hCd-7L-jfv" id="1EE-w3-6We"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sUc-nV-qJf" userLabel="First Responder" sceneMemberID="firstResponder"/>
