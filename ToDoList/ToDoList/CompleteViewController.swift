@@ -9,21 +9,32 @@
 import UIKit
 
 class CompleteViewController: UIViewController {
-
+    
     @IBOutlet weak var nameLabel: UILabel!
     
-    var todo = ToDo()
+    var toDo : ToDo? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       nameLabel.text = todo.name
+        if let toDo = toDo {
+            if toDo.important {
+                if let name = toDo.name {
+                    nameLabel.text = " ❗️ " + name
+                }
+            } else {
+                nameLabel.text = toDo.name
+            }
+        }
     }
     
-  
     @IBAction func completeTapped(_ sender: Any) {
-        
+        if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
+            if let toDo = toDo {
+                context.delete(toDo)
+                (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
+            }
+        }
+        navigationController?.popViewController(animated: true)
     }
-    
-
 }

@@ -9,25 +9,27 @@
 import UIKit
 
 class CreateToDoViewController: UIViewController {
-
-    @IBOutlet weak var NameText: UITextField!
+    
+    @IBOutlet weak var nameText: UITextField!
     @IBOutlet weak var importantSwitch: UISwitch!
     var toDoTableVC : ToDoTableViewController? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         
     }
     
     @IBAction func addTapped(_ sender: Any) {
-        let newToDo = ToDo()
-        newToDo.important = importantSwitch.isOn
-        if let name = NameText.text {
-            newToDo.name = name
+        if let context = (UIApplication.shared.delegate as? AppDelegate)?.persistentContainer.viewContext {
+            let newToDo = ToDo(context: context)
+            newToDo.important = importantSwitch.isOn
+            if let name = nameText.text {
+                newToDo.name = name
+            }
+            (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
         }
-        toDoTableVC?.toDos.append(newToDo)
-        toDoTableVC?.tableView.reloadData()
         navigationController?.popViewController(animated: true)
+        
     }
 }
