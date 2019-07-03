@@ -16,8 +16,6 @@ class CreateToDoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
     
     @IBAction func addTapped(_ sender: Any) {
@@ -30,6 +28,5 @@ class CreateToDoViewController: UIViewController {
             (UIApplication.shared.delegate as? AppDelegate)?.saveContext()
         }
         navigationController?.popViewController(animated: true)
-        
     }
 }
